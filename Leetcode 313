@@ -1,0 +1,23 @@
+#Leetcode 313
+
+public class Solution {
+    public int nthSuperUglyNumber(int n, int[] primes) {
+        if(n == 1) return 1;
+        int k = primes.length, count = 1;
+        int[] indexes = new int[k];
+        int[] uglyNums = new int[n];
+        uglyNums[0] = 1;
+        while(count < n) {
+            int min = Integer.MAX_VALUE;
+            for(int i = 0; i < k; i++) {
+                if(primes[i] * uglyNums[indexes[i]] < min) min = primes[i] * uglyNums[indexes[i]];
+            }
+            uglyNums[count] = min;
+            for(int i = 0; i < k; i++) {
+                if(primes[i] * uglyNums[indexes[i]] == min) indexes[i]++;
+            }
+            count++;
+        }
+        return uglyNums[n - 1];
+    }
+}
