@@ -1,2 +1,2 @@
 # Leetcode
-code for leetcode algorithm problems
+Java code for leetcode algorithm problems
